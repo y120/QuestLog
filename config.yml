@@ -1,0 +1,72 @@
+config-version: 2
+
+objectives:
+    0:
+        type: APPROACH
+        text:
+        # note: if you start with a formatting code like &n, you must surround the
+        #       line with single or double quotation marks.
+        # if at any point, the plugin doesn't like some text, try just surrounding your
+        # text with quotation marks.
+        - '&nWelcome to my server&r! Visit &2Somewhere&0 by going to (100, *, 100)!'
+        x: 0
+        y: 0
+        z: 0
+        r: 10000
+        # note: commands is optional
+        commands:
+        - /ql msg %p% Welcome to my server, %dp%!
+    1:
+        type: APPROACH
+        text:
+        - You've reached &2Somewhere&0! Now &4kill&0 some zombies!
+        x: 100
+        # a y-value of -1 means it will be ignored, i.e. height doesn't matter
+        y: -1
+        z: 100
+        r: 5
+        commands:
+        - /give %p% stone_sword
+        - /ql msg %p% Have a sword to make zombie killing easier!
+    2:
+        type: KILL
+        text:
+        # the lack of a - signifies that it should not be on a new line
+        - Those zombies sure were annoying!
+          Now go get some dirt!
+        # entity can be one of the following:
+        # BAT, BLAZE, CAVE_SPIDER, CHICKEN, COW, CREEPER, ENDER_DRAGON,
+        # ENDERMAN, GHAST, GIANT, IRON_GOLEM, MAGMA_CUBE, MUSHROOM_COW,
+        # OCELOT, PIG, PIG_ZOMBIE, PLAYER, SHEEP, SILVERFISH, SKELETON,
+        # SLIME, SNOWMAN, SPIDER, SQUID, VILLAGER, WITCH, WITHER, WOLF,
+        # ZOMBIE
+        # technically, it can be more things, but there's no check for
+        # validity, so don't use anything else.
+        entity: ZOMBIE
+        amount: 4
+        commands:
+        - /give %p% stone_spade
+    3:
+        type: COLLECT
+        text: 
+        - This is a long bit of flavour text.
+        # for an empty line, use ''
+        - ''
+        - Your valiant dirt-gathering efforts have not gone unnoticed. A
+          nearby town crier sees you and is overcome with admiration.
+        - "Everyone, look! The Hero %dp% has arrived!"
+        # item should be the item id to be collected
+        # this type of objective is completed if while picking up any item,
+        # your inventory contains at least <amount> of item.
+        item: 3
+        amount: 32
+        commands:
+        - /ql msg %p% Thanks for gathering the dirt; have some exp!
+        - /xp 5L %p%
+    4:
+        type: KILL
+        text:
+        - This is an invalid objective. Since there was no entity provided,
+          no progress will ever be made. As such, this objective can never
+          be completed.
+        # note also that the console will complain about this

@@ -1,0 +1,11 @@
+name: QuestLog
+version: 1.0.0
+description: Stores completion of objectives in a book.
+author: y120
+main: com.github.y120.bukkit.questlog.QuestLogPlugin
+
+commands:
+    questlog:
+        description: Check how many objectives are available. Regenerate players' missing Quest Logs.
+        usage: /<command>
+        aliases: [ql]
